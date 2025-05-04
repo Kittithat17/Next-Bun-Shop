@@ -1,26 +1,123 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.5rem;
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(204, 5%, 29%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(204, 5%, 29%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(204, 5%, 29%);
+  --primary: hsl(292, 25%, 60%);
+  --primary-foreground: hsl(293, 2%, 97%);
+  --secondary: hsl(286, 0%, 97%);
+  --secondary-foreground: hsl(285, 1%, 21%);
+  --muted: hsl(286, 0%, 97%);
+  --muted-foreground: hsl(286, 2%, 55%);
+  --accent: hsl(286, 0%, 97%);
+  --accent-foreground: hsl(285, 1%, 21%);
+  --destructive: hsl(27, 24%, 58%);
+  --border: hsl(286, 0%, 92%);
+  --input: hsl(286, 0%, 92%);
+  --ring: hsl(292, 25%, 60%);
+  --chart-1: hsl(41, 22%, 65%);
+  --chart-2: hsl(185, 12%, 60%);
+  --chart-3: hsl(227, 7%, 40%);
+  --chart-4: hsl(84, 19%, 83%);
+  --chart-5: hsl(70, 19%, 77%);
+  --sidebar: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(204, 5%, 29%);
+  --sidebar-primary: hsl(292, 25%, 60%);
+  --sidebar-primary-foreground: hsl(293, 2%, 97%);
+  --sidebar-accent: hsl(286, 0%, 97%);
+  --sidebar-accent-foreground: hsl(285, 1%, 21%);
+  --sidebar-border: hsl(286, 0%, 92%);
+  --sidebar-ring: hsl(292, 25%, 60%);
+}
+
+.dark {
+  --background: hsl(204, 5%, 29%);
+  --foreground: hsl(0, 0%, 100%);
+  --card: hsl(285, 1%, 21%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --popover: hsl(285, 1%, 21%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --primary: hsl(293, 28%, 54%);
+  --primary-foreground: hsl(293, 2%, 97%);
+  --secondary: hsl(286, 1%, 27%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(286, 1%, 27%);
+  --muted-foreground: hsl(286, 2%, 71%);
+  --accent: hsl(286, 1%, 27%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(22, 19%, 70%);
+  --border: hsla(0, 0%, 0%, 0.1);
+  --input: hsla(0, 0%, 0%, 0.15);
+  --ring: hsl(293, 28%, 54%);
+  --chart-1: hsl(264, 24%, 49%);
+  --chart-2: hsl(162, 17%, 60%);
+  --chart-3: hsl(70, 19%, 77%);
+  --chart-4: hsl(304, 26%, 63%);
+  --chart-5: hsl(16, 25%, 64%);
+  --sidebar: hsl(285, 1%, 21%);
+  --sidebar-foreground: hsl(0, 0%, 100%);
+  --sidebar-primary: hsl(293, 28%, 54%);
+  --sidebar-primary-foreground: hsl(293, 2%, 97%);
+  --sidebar-accent: hsl(286, 1%, 27%);
+  --sidebar-accent-foreground: hsl(0, 0%, 100%);
+  --sidebar-border: hsla(0, 0%, 0%, 0.1);
+  --sidebar-ring: hsl(293, 28%, 54%);
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
 }
