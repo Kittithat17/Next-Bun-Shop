@@ -18,7 +18,6 @@ const Inputform = ({label,id,required = false,...props} : InputformProps) => {
         <Input
         id = {id}
         name = {id}
-        required = {required}
         {...props}
         />
     </div>

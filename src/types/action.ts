@@ -4,7 +4,9 @@ export interface InnitailFormState {
     errors? : Record<string, string[]>;
 }
 
-const innitialFormState: InnitailFormState = {
+export const innitialFormState: InnitailFormState = {
     success: false,
     message: '',
 }
+
+export type Actiontype = (_prevState: InnitailFormState, formData: FormData) => Promise<InnitailFormState>
